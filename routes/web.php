@@ -1,4 +1,8 @@
 <?php
+//Liberando o acesso do back la pro front
+header("Access-Control-Allow-Headers: Authorization, Content-Type");
+header("Access-Control-Allow-Origin: *");
+header('content-type: application/json; charset=utf-8');
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -19,9 +23,6 @@ $router->get('/', function () use ($router) {
 
 // $router->get('/lista-filmes', 'Filmes@lista'); //listar filmes home
 $router->get('/lista-filmes', 'Filme@lista', function () use ($router) {
-    echo view('/templates/header');
-    echo view('/pages/moviegrid');
-    echo view('/templates/footer');
 });
 
 $router->get('/aula[/{id}]', 'AulaController@show'); //id é obrigatorio

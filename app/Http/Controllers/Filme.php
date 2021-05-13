@@ -18,14 +18,14 @@ class filme extends Controller{
     }
 
     public function create(Request $request){
-        if(isset($request->nome)){
             $filme = new \App\Models\Filme();
-            $filme->nome = $request->nome;
+            $filme->Nome = $request->Nome;
+            $filme->Nota = $request->Nota;
+            $filme->Ano = $request->Ano;
             $filme->save();
             return response($filme, 201, [
                 'Content-Type' => 'application/json'
             ]);
-        }
         return response([
             'error' => 'nome nao foi informado!'
         ], 404, [

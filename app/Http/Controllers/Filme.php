@@ -23,15 +23,39 @@ class filme extends Controller{
             $filme->Nota = $request->Nota;
             $filme->Ano = $request->Ano;
             $filme->save();
-            return response($filme, 201, [
+    }
+
+    public function update(Request $request, $id){
+        if(isset($id)){
+            $filme = \App\Models\Filme::find($id);
+            $filme->Nome = $request->Nome;
+            $filme->Nota = $request->Nota;
+            $filme->Ano = $request->Ano;
+            $filme->save();
+            return response($filme, 200, [
                 'Content-Type' => 'application/json'
             ]);
+        }
         return response([
-            'error' => 'nome nao foi informado!'
+            'error' => 'Nome da aula ou id nao foi informado!'
         ], 404, [
             'Content-Type' => 'application/json'
         ]);
     }
 
+    public function destroy($id){
+        if($id){
+            $filme = \App\Models\Filme::find($id);
+            $filme->delete();
+            return response($filme, 200, [               //resposta true, retorna 1, $aula retorna o objeto deletado
+                'Content-Type' => 'application/json'
+            ]);
+        }
+        return response([
+            'error' => 'id nao foi informado!'
+        ], 404, [
+            'Content-Type' => 'application/json'
+        ]);
+    }
 
 }

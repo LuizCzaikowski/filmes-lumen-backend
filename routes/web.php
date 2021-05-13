@@ -22,9 +22,11 @@ $router->get('/', function () use ($router) {
 });
 
 // $router->get('/lista-filmes', 'Filmes@lista'); //listar filmes home
-$router->get('/lista-filmes', 'Filme@lista', function () use ($router) {
+$router->get('/filme', 'Filme@lista', function () use ($router) {
 });
-$router->post('/adiciona-filmes', 'Filme@create');
+$router->post('/filme', 'Filme@create');
+$router->put('/filme/{id}', 'Filme@update');
+$router->delete('/filme/{id}', 'Filme@destroy');
 
 $router->get('/aula[/{id}]', 'AulaController@show'); //id é obrigatorio
 $router->post('/aula', 'AulaController@create');

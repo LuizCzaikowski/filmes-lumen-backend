@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+header("Access-Control-Allow-Headers: Authorization, Content-Type");
+header("Access-Control-Allow-Origin: *");
+header('content-type: application/json; charset=utf-8');
+
 class filme extends Controller{
     
     public function lista($id = null){
